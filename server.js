@@ -24,8 +24,8 @@ app.use(helmet());
 app.use(cors());
 
 // mount routes
-app.use("/", userRoutes);
-app.use("/", authRoutes);
+app.use("api/", userRoutes);
+app.use("auth/", authRoutes);
 
 // Catch unauthorized errors
 app.use((err, req, res, next) => {
@@ -54,7 +54,7 @@ mongoose.connection.on("error", () => {
   throw new Error(`unable to connect to database: ${config.mongoUri}`);
 });
 
-app.listen(process.env.PORT || 4000, (err) => {
+app.listen(process.env.PORT || 6000, (err) => {
   if (err) {
     console.log(err);
   }

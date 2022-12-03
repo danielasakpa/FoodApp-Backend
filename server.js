@@ -24,8 +24,8 @@ app.use(helmet());
 app.use(cors());
 
 // mount routes
-app.use("api/", userRoutes);
-app.use("auth/", authRoutes);
+app.use("/", userRoutes);
+app.use("/", authRoutes);
 
 // Catch unauthorized errors
 app.use((err, req, res, next) => {

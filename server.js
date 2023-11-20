@@ -20,9 +20,13 @@ app.use(cookieParser());
 app.use(compress());
 // secure apps by setting various HTTP headers
 app.use(helmet());
+
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors({
   origin: "https://foodapp-w2.netlify.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Enable credentials
+  optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
 }));
 
 // mount routes
@@ -38,7 +42,6 @@ app.use((err, req, res, next) => {
     console.log(err);
   }
 });
-
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
